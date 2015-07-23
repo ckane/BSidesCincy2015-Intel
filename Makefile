@@ -1,6 +1,6 @@
 default:: intel.pdf
 
-intel.dvi: intel.ltx
+intel.dvi: intel.ltx intel-program.eps
 	latex intel.ltx
 	latex intel.ltx
 
