@@ -214,4 +214,52 @@ Inside security team, treat just like analysis publications:
 
 \end{slide}
 
+\begin{slide}[toc=Deployment]{Intelligence Deployment}
+Deployment of intelligence describes delivering data from knowledge management into instructions
+for your tools / systems to watch for it in your attack surface. Using metadata collected and
+processed above, you can define static queries to retrieve intelligence stored in your program
+appropriate for specific uses.\vspace{0.1in}
+
+Example:
+\begin{itemize}
+ \item Process lists of IP addresses from known DDoS attacks
+ \item Non-optimal to deploy them into Snort alerts
+ \item Use Bro or similar to log connection-level metadata into elasticsearch
+ \item Deploy to automated elasticsearch query that can report a single alert documenting
+       all activity after exceeding a certain threshold
+\end{itemize}
+
+Return all IP address values into a JSON list where the IP address in CRITs contains at least one
+metadata object of type "Historic Activity" who's value is "DDoS".
+
+\end{slide}
+
+\begin{slide}[toc=]{Intelligence Deployment Examples}
+\url{https://www.bro.org/sphinx/frameworks/intel.html}\vspace{0.1in}
+
+\url{https://www.elastic.co/products/elasticsearch}\vspace{0.1in}
+
+\url{http://suricata-ids.org/}\vspace{0.1in}
+
+\url{http://plusvic.github.io/yara/}
+
+\end{slide}
+
+\begin{slide}{Thanks}
+\begin{itemize}
+ \item Security BSides Cincinnati 2015
+ \item \url{http://bsidescincy.org/}
+\end{itemize}\vspace{0.1in}
+
+\begin{itemize}
+ \item Security513 crew
+ \item \url{https://github.com/Security513}
+\end{itemize}\vspace{0.1in}
+
+\begin{itemize}
+ \item University of Cincinnati, Cyber Security programs
+ \item \url{http://www.uc.edu/academics/cyber.html}
+\end{itemize}
+\end{slide}
+
 \end{document}
