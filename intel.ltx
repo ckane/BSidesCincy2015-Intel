@@ -23,7 +23,9 @@
 \begin{itemize}
 \item Security Operations Technical Leader for GE Aviation
 \item Ph. D. candidate, Computer Science Engineering\\Cyber Operations track, University of Cincinnati
+\item B.S. Computer Engineering, University of Cincinnati
 \item CRITs project contributor
+\item FreeBSD community member \& contributor since 2001
 \item 5 years experience in IT Security, 10 years in CS and IT
 \item Cincinnati native
 \item Running (because I like cake)
@@ -81,7 +83,7 @@ now than it was in 2013}
  \item Age of evidence typically lessens impact on certainty
  \item Detail of evidence can help identify situational contexts for which evidence is higher
        confidence ("\textit{IP is bad}" vs. "\textit{IP is bad when observed sending email}")
- \item Quantity of independent sources supporting/refuting a conclusion
+ \item Quantity of independent sources supporting/refuting conclusion
  \item Quantity of sources with conflicting/competing assessments
 \end{itemize}
 \end{slide}
@@ -101,9 +103,115 @@ now than it was in 2013}
     \item What scope do you consider?
     \item Decision driving information? $\rightarrow$ Structured metadata
     \item Technical vs. Informational: Audience
-    \item What internal capabilities do you have to action?
+    \item What internal capabilities do you have to action? Tool survey
    \end{itemize}
  \end{description}
+
+Your \textbf{Collection Plan} consists of what information you choose to 
+inform your program, as well as identifying language in that information that
+will be most critical to inform decision making.
+
+\begin{itemize}
+ \item Do you use Snort (\url{http://www.snort.org})? If not, then intelligence
+       in the form of Snort signatures may be something you want to exclude.
+ \item CriticalStack Intel for Bro (\url{https://intel.criticalstack.com}): UI
+       for creating custom collection plans. Bro-centric (\url{http://www.bro.org}).
+\end{itemize}
+
+\end{slide}
+
+\begin{slide}[toc=Processing]{Intelligence Consumption: Processing}
+\textbf{Processing}: Movement of data or material towards a known goal or end result,
+by passing it through a series of stages or a sequence of actions.\vspace{0.1in}
+Convert our raw material, the selected intel defined by collection plan, and run it
+through processing to normalize the information for inclusion into our knowledge management
+function.
+\begin{itemize}
+ \item Read the narrative
+ \item Document the relationships between significant data points
+ \item Note important contextual clues (used in data theft? ransom? DDoS?)
+ \item Attack models such as "Cyber Kill Chain" can be helpful for context
+ \item Organize into consistent structured output, for storage. Always store
+       original source document(s) and include references to them in output
+\end{itemize}
+
+Spreadsheets / CSV as output can be surprisingly effective
+
+\end{slide}
+
+\begin{slide}[toc=Knowledge Mgmt]{Intelligence Consumption: Knowledge Management}
+Your program's intelligence in its \textit{final form}
+
+\begin{itemize}
+ \item Program's intelligence is published for broader audience
+ \item Queryable
+ \item Normalized $\rightarrow$ consistent $\rightarrow$ predictable
+ \item Once organized, it becomes easier to reorganize
+ \item Old raw collections are easy to search/retrieve. Periodically re-process
+       old intelligence as program matures
+\end{itemize}
+
+The organization of this system is driven by two factors:
+\begin{itemize}
+ \item Minimize pivots and external investigation by event analysts (regular feedback to drive this)
+ \item Support dynamic signature deployment, using queries on collected context, with minimal tool-local
+       modifications chasing each new collection
+\end{itemize}
+\end{slide}
+
+\begin{slide}[toc=]{Intelligence Consumption: CRITs}
+CRITs: \url{https://crits.github.io}
+\begin{itemize}
+ \item Open-Source, strong community support (developed by Mitre, contributors
+       include GE, Ashland Inc., and growing)
+ \item MongoDB helps support frequent collection plan changes
+ \item Start with \textit{something} to build from, rather than scratch
+\end{itemize}
+\begin{figure}
+\includegraphics[height=1.5in]{crits-rels}
+\end{figure}
+\end{slide}
+
+\begin{slide}[toc=Analysis]{Intelligence Analysis}
+Researching your collected intelligence to produce further intelligence that can
+be leveraged by your program.\vspace{0.1in}
+
+Examples:
+\begin{itemize}
+ \item Search for network indicators buried in lists of strings from EXEs
+ \item Look across collected IP addresses associated with Corkow malware to
+       identify network subnets containing 5 or more distinct IP addresses
+       used for Command \& Control
+ \item Gather domains associated with "APT28 campaign" (FireEye), to identify WHOIS
+       information which is exclusively used for domains by that group
+\end{itemize}
+
+Preferred approach is to publish an internal analysis report, documenting conclusions
+with supporting evidence, and meeting as many collection requirements as possible in
+your narrative.\vspace{0.1in}
+
+Feed the publication through your existing intelligence process:\\\textbf{Eat your own dog food}
+\end{slide}
+
+\begin{slide}[toc=Reporting]{Intelligence Reporting: ELI5}
+\textit{Explain Like I'm Five}
+\begin{figure}
+\includegraphics[height=2.5in]{eli5}
+\end{figure}
+\end{slide}
+
+\begin{slide}[toc=]{Intelligence Reporting}
+Can be treated similarly to \textit{Analysis}, however also intended to inform an audience
+outside of your security team. Summarize away deep technical details, but also consolidate
+information from Analysis references into the same report.\vspace{0.1in}
+
+Inside security team, treat just like analysis publications:
+\begin{itemize}
+ \item Simplifies program
+ \item Helpful for training (your own team is in flux as much as the threat landscape)
+ \item Queryable records for "Where and when have we reported this outside our team?"
+\end{itemize}
+
 \end{slide}
 
 \end{document}
